@@ -1,0 +1,2 @@
+// Frame-sequence metadata (generated from the source videos).
+export const SEQ = {"build": {"n": 184, "steps": [{"ar": "خردل", "en": "Mustard", "from": 4}, {"ar": "خس فريش", "en": "Fresh lettuce", "from": 30}, {"ar": "طماطم", "en": "Tomato", "from": 46}, {"ar": "لحمة بقري وجبنة شيدر", "en": "Beef & cheddar", "from": 62}, {"ar": "كاتشب", "en": "Ketchup", "from": 98}, {"ar": "بصل", "en": "Onion", "from": 122}, {"ar": "مخلل", "en": "Pickles", "from": 147}, {"ar": "العيش يقفل", "en": "The bun", "from": 155}]}, "fire": {"n": 145, "split": 109, "dense": [18, 90]}};

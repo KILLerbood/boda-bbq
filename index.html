@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#060507">
+<title>BODA BBQ | Smashed to order</title>
+<meta name="description" content="BODA BBQ: smash burgers built layer by layer. Order online.">
+<link rel="preload" href="assets/fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/oswald-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+<link rel="modulepreload" href="js/i18n.js">
+<link rel="modulepreload" href="js/data.js">
+</head>
+<body class="is-loading">
+<a class="skip" href="#menu" data-i18n="nav.menu">Line-Up</a>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__mark" dir="ltr">BODA<span>BBQ</span></div>
+  <div class="loader__bar"><i id="loaderBar"></i></div>
+  <p class="loader__txt" data-i18n="loader">Firing up the grill</p>
+</div>
+
+<header class="hdr" id="hdr">
+  <a class="brand" href="#top" aria-label="BODA BBQ">
+    <b dir="ltr">BODA<span>BBQ</span></b>
+    <small data-i18n="brand.sub">Smashed to order</small>
+  </a>
+  <nav class="nav" aria-label="Sections">
+    <a href="#hero"><i>01.</i> <span data-i18n="nav.build">Build</span></a>
+    <a href="#menu"><i>02.</i> <span data-i18n="nav.menu">Line-Up</span></a>
+    <a href="#yours"><i>03.</i> <span data-i18n="nav.yours">Your Burger</span></a>
+    <a href="#sear"><i>04.</i> <span data-i18n="nav.sear">The Sear</span></a>
+    <a href="#cut"><i>05.</i> <span data-i18n="nav.cut">The Cut</span></a>
+    <a href="#story"><i>06.</i> <span data-i18n="nav.story">Story</span></a>
+  </nav>
+  <div class="hdr__acts">
+    <button class="lang" id="langBtn" type="button" data-i18n-aria="lang.aria"><span data-i18n="lang.btn">عربي</span></button>
+    <button class="cartbtn" id="cartBtn" type="button" aria-label="Cart, 0 items">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2.2l2.1 10.2a2 2 0 0 0 2 1.6h7.5a2 2 0 0 0 2-1.5L20.5 8H6.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="19.5" r="1.4" fill="currentColor"/><circle cx="17" cy="19.5" r="1.4" fill="currentColor"/></svg>
+      <span class="cartbtn__n" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <!-- 01 · the build: a real-looking burger assembles as you scroll -->
+  <section class="stage" id="hero" aria-labelledby="heroT">
+    <div class="stage__sticky">
+      <canvas class="stage__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="stage__vignette"></div>
+      <div class="labels" id="labels" aria-hidden="true"></div>
+      <div class="hud">
+        <p class="kicker" data-i18n="hero.kicker">Built layer by layer // No. 01</p>
+        <h1 class="hud__t" id="heroT"><span data-i18n="hero.t1">Every</span><br><span class="nw"><em>// <b id="layerNo">01.</b></em> <span data-i18n="hero.t2">Layer</span></span></h1>
+        <p class="hud__k" data-i18n="hero.temp">Flat-top</p>
+        <p class="temp"><span id="temp">180</span>°C</p>
+        <p class="hud__p" data-i18n="hero.p"></p>
+        <dl class="spec">
+          <div><dt data-i18n="spec.bun">Bun</dt><dd data-i18n="spec.bun.v"></dd></div>
+          <div><dt data-i18n="spec.beef">Beef</dt><dd data-i18n="spec.beef.v"></dd></div>
+          <div><dt data-i18n="spec.cheese">Cheese</dt><dd data-i18n="spec.cheese.v"></dd></div>
+          <div><dt data-i18n="spec.sauce">Sauce</dt><dd data-i18n="spec.sauce.v"></dd></div>
+          <div><dt data-i18n="spec.cook">Cook</dt><dd data-i18n="spec.cook.v"></dd></div>
+        </dl>
+        <a class="btn btn--neon" href="#menu" data-i18n="hero.cta">Order now</a>
+      </div>
+      <div class="ruler" aria-hidden="true"><i id="heroBar"></i></div>
+      <p class="scrollhint" id="scrollHint" data-i18n="hero.scroll">Scroll to build</p>
+    </div>
+  </section>
+
+  <!-- 03 · menu -->
+  <section class="sec menu" id="menu" aria-labelledby="menuT">
+    <header class="sec__head">
+      <p class="kicker" data-i18n="menu.kicker">Menu // select your build</p>
+      <h2 class="sec__t" id="menuT"><em>// 01.</em> <span data-i18n="menu.t">The line-up</span></h2>
+    </header>
+    <div class="tabs" role="group" aria-label="Filter">
+      <button class="tab is-on" type="button" data-cat="all" aria-pressed="true" data-i18n="tab.all">All</button>
+      <button class="tab" type="button" data-cat="beef" aria-pressed="false" data-i18n="tab.beef">Beef</button>
+      <button class="tab" type="button" data-cat="chicken" aria-pressed="false" data-i18n="tab.chicken">Chicken</button>
+      <button class="tab" type="button" data-cat="sides" aria-pressed="false" data-i18n="tab.sides">Sides &amp; drinks</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- 04 · build your burger -->
+  <section class="sec yours" id="yours" aria-labelledby="yoursT">
+    <header class="sec__head">
+      <p class="kicker" data-i18n="yours.kicker">Custom // your rules</p>
+      <h2 class="sec__t" id="yoursT"><em>// 02.</em> <span data-i18n="yours.t">Build your burger</span></h2>
+      <p class="sec__p" data-i18n="yours.p"></p>
+    </header>
+    <div class="yours__wrap">
+      <form class="yours__form" id="yoursForm" novalidate></form>
+      <aside class="yours__out" aria-live="polite">
+        <ol class="stack" id="stack"></ol>
+        <div class="yours__sum">
+          <p class="hud__k" data-i18n="yours.total">Your burger</p>
+          <p class="yours__price" id="yoursPrice">SAR 0</p>
+          <div class="yours__acts">
+            <button class="btn btn--line" type="button" id="yoursAdd" data-i18n="yours.add">Add to cart</button>
+            <button class="btn btn--neon" type="button" id="yoursBuy" data-i18n="yours.buy">Buy now</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- numbers -->
+  <section class="stats" aria-label="By the numbers">
+    <p class="kicker" data-i18n="stats.kicker">By the numbers</p>
+    <div class="stats__row">
+      <div class="stat"><b data-count="0">0</b><span data-i18n="s.days">Days in a freezer</span></div>
+      <div class="stat"><b data-count="260" data-suffix="°">0</b><span data-i18n="s.temp">Flat-top temperature</span></div>
+      <div class="stat"><b data-count="7">0</b><span data-i18n="s.layers">Layers in the Classic</span></div>
+      <div class="stat"><b data-count="12">0</b><span data-i18n="s.hours">Hours of chicken marinade</span></div>
+    </div>
+  </section>
+
+  <!-- 05 · the sear: real flip footage -->
+  <section class="stage stage--sear" id="sear" aria-labelledby="searT">
+    <div class="stage__sticky">
+      <figure class="sear__frame"><canvas id="searCanvas" aria-hidden="true"></canvas><figcaption class="sear__tag"><i></i><span id="searTag" data-i18n="sear.tag1">Flip on the grill</span></figcaption></figure>
+      <div class="hud hud--sear">
+        <p class="kicker" data-i18n="sear.kicker">The flat-top smash</p>
+        <h2 class="hud__t" id="searT"><em>04.</em> <span data-i18n="sear.t">The sear</span></h2>
+        <p class="hud__p" data-i18n="sear.p"></p>
+      </div>
+      <p class="sear__deg"><span id="searDeg">20</span>°</p>
+      <div class="sear__meter" aria-hidden="true"><i id="searMeter"></i></div>
+    </div>
+  </section>
+
+  <!-- 06 · the cut: horizontal scroll -->
+  <section class="cut" id="cut" aria-labelledby="cutT">
+    <div class="cut__sticky">
+      <header class="sec__head">
+        <p class="kicker" data-i18n="cut.kicker">What goes in</p>
+        <h2 class="sec__t" id="cutT"><em>// 06.</em> <span data-i18n="cut.t">The cut</span></h2>
+      </header>
+      <div class="cut__track" id="cutTrack">
+        <article class="ing"><img src="assets/menu/info-grill.webp" alt="" loading="lazy" width="1400" height="933"><div><span>01</span><h3 data-i18n="c1.t"></h3><p data-i18n="c1.p"></p></div></article>
+        <article class="ing"><img src="assets/menu/classic.webp" alt="" loading="lazy" width="1400" height="1050"><div><span>02</span><h3 data-i18n="c2.t"></h3><p data-i18n="c2.p"></p></div></article>
+        <article class="ing"><img src="assets/menu/double.webp" alt="" loading="lazy" width="1400" height="1050"><div><span>03</span><h3 data-i18n="c3.t"></h3><p data-i18n="c3.p"></p></div></article>
+        <article class="ing"><img src="assets/menu/special.webp" alt="" loading="lazy" width="1400" height="1050"><div><span>04</span><h3 data-i18n="c4.t"></h3><p data-i18n="c4.p"></p></div></article>
+        <article class="ing"><img src="assets/menu/fries.webp" alt="" loading="lazy" width="1400" height="1050"><div><span>05</span><h3 data-i18n="c5.t"></h3><p data-i18n="c5.p"></p></div></article>
+      </div>
+      <p class="scrollhint scrollhint--static" data-i18n="cut.hint">Scroll to browse</p>
+    </div>
+  </section>
+
+  <!-- 07 · story -->
+  <section class="sec story" id="story" aria-labelledby="storyT">
+    <div class="story__txt">
+      <p class="kicker" data-i18n="story.kicker">Est. Boda BBQ</p>
+      <h2 class="sec__t" id="storyT"><em>// 07.</em> <span data-i18n="story.t">Our story</span></h2>
+      <p class="sec__p" data-i18n="story.p1"></p>
+      <p class="sec__p" data-i18n="story.p2"></p>
+    </div>
+    <div class="story__media">
+      <img src="assets/menu/meal.webp" alt="" loading="lazy" width="1400" height="1400">
+      <img src="assets/menu/info-hands.webp" alt="" loading="lazy" width="1400" height="2100">
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot__brand" dir="ltr">BODA<span>BBQ</span></div>
+  <p data-i18n="foot.hours">Open daily, 1 PM to 2 AM</p>
+  <p class="foot__made"><span data-i18n="foot.made">Made by</span> <b>Magmafy</b></p>
+  <p class="foot__c">© <span id="year"></span> BODA BBQ. <span data-i18n="foot.rights">All rights reserved.</span></p>
+</footer>
+
+<button class="mbar" id="mbar" type="button"><span class="mbar__n" id="mbarCount">0</span><span data-i18n="mbar.view">View cart</span><b id="mbarTotal"></b></button>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer__bg" data-close></div>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+    <div class="drawer__head"><h2 id="drawerTitle" data-i18n="cart.title">Your cart</h2><button class="x" type="button" data-close data-i18n-aria="cart.close">×</button></div>
+
+    <div class="step is-on" id="stepCart">
+      <div class="cart__empty" id="cartEmpty"><p data-i18n="cart.empty">Your cart is empty.</p><button class="btn btn--line" type="button" data-close data-go="#menu" data-i18n="cart.empty.cta">See the menu</button></div>
+      <div class="cart__list" id="cartList"></div>
+      <div class="cart__sum" id="cartSum" hidden>
+        <p><span data-i18n="cart.sub">Subtotal</span><b id="sumSub"></b></p>
+        <p><span data-i18n="cart.del">Delivery</span><b id="sumDel"></b></p>
+        <p class="tot"><span data-i18n="cart.total">Total</span><b id="sumTotal"></b></p>
+        <button class="btn btn--neon btn--full" type="button" id="toCheckout" data-i18n="cart.checkout">Checkout</button>
+      </div>
+    </div>
+
+    <form class="step" id="stepCheckout" novalidate>
+      <button class="back" type="button" id="backToCart" data-i18n="co.back">Back to cart</button>
+      <p class="co__h" data-i18n="co.order">Your order</p>
+      <ul class="co__items" id="coItems"></ul>
+      <label class="f"><span data-i18n="co.name">Name</span><input name="name" autocomplete="name" maxlength="60" required></label>
+      <label class="f"><span data-i18n="co.phone">Mobile</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="16" dir="ltr" data-i18n-ph="co.phone.ph" required></label>
+      <label class="f"><span data-i18n="co.addr">Address</span><textarea name="address" rows="2" maxlength="200" autocomplete="street-address" data-i18n-ph="co.addr.ph" required></textarea></label>
+      <label class="f"><span data-i18n="co.notes">Notes (optional)</span><input name="notes" maxlength="150"></label>
+      <fieldset class="pay"><legend data-i18n="co.pay">Payment</legend>
+        <label><input type="radio" name="pay" value="cash" checked> <span data-i18n="co.cash">Cash on delivery</span></label>
+        <label><input type="radio" name="pay" value="card"> <span data-i18n="co.card">Card on delivery</span></label>
+      </fieldset>
+      <div class="cart__sum">
+        <p><span data-i18n="cart.sub">Subtotal</span><b id="coSub"></b></p>
+        <p><span data-i18n="cart.del">Delivery</span><b id="coDel"></b></p>
+        <p class="tot"><span data-i18n="cart.total">Total</span><b id="coTotal"></b></p>
+      </div>
+      <p class="co__closed" id="coClosed" hidden data-i18n="co.closed"></p>
+      <p class="co__err" id="coErr" role="alert"></p>
+      <button class="btn btn--neon btn--full" type="submit" data-i18n="co.send">Send order on WhatsApp</button>
+    </form>
+
+    <div class="step" id="stepDone">
+      <div class="done__check" aria-hidden="true">✓</div>
+      <h3 data-i18n="done.t">Order ready to send</h3>
+      <p data-i18n="done.p"></p>
+      <p class="done__num"><span data-i18n="done.num">Order no.</span> <b id="doneNum" dir="ltr"></b></p>
+      <a class="btn btn--neon btn--full" id="doneSend" href="#" target="_blank" rel="noopener noreferrer" data-i18n="done.send">Open WhatsApp again</a>
+      <button class="btn btn--line btn--full" type="button" data-close data-go="#menu" data-i18n="done.more">Back to menu</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
